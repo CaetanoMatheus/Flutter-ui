@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:plant_app/utils/consts.dart';
-import 'package:plant_app/utils/image_resolver.dart';
 
-abstract class BodyStyles {
-  static BoxDecoration headerBackground() {
+abstract class HeaderStyles {
+  static BoxDecoration background() {
     return BoxDecoration(
       color: Consts.primaryColor,
       borderRadius: BorderRadius.only(
@@ -14,7 +13,18 @@ abstract class BodyStyles {
     );
   }
 
-  static BoxDecoration headerSearchInputBackground() {
+  static EdgeInsets titlePadding() {
+    return EdgeInsets.symmetric(horizontal: Consts.defaultPadding);
+  }
+
+  static TextStyle title(BuildContext context) {
+    return Theme.of(context)
+        .textTheme
+        .headline5
+        .copyWith(color: Colors.white, fontWeight: FontWeight.bold);
+  }
+
+  static BoxDecoration searchInputBackground() {
     return BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(20),
@@ -28,13 +38,20 @@ abstract class BodyStyles {
     );
   }
 
-  static InputDecoration headerSearchInput() {
+  static EdgeInsets searchInputMargin() {
+    return EdgeInsets.symmetric(horizontal: Consts.defaultPadding);
+  }
+
+  static EdgeInsets searchInputPadding() {
+    return EdgeInsets.symmetric(horizontal: Consts.defaultPadding);
+  }
+
+  static InputDecoration searchInput(String hintText) {
     return InputDecoration(
-      hintText: 'Search',
+      hintText: hintText,
       hintStyle: TextStyle(color: Consts.primaryColor.withOpacity(.5)),
       enabledBorder: InputBorder.none,
       focusedBorder: InputBorder.none,
-      suffixIcon: ImageResolver.icon('search'),
     );
   }
 }
