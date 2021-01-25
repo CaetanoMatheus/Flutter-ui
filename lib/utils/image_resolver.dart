@@ -9,4 +9,8 @@ abstract class ImageResolver {
   static Image img(String imageName) {
     return Image.asset('assets/images/$imageName.png');
   }
+
+  static AssetImage decorationImg(String imageName) {
+    return AssetImage('assets/images/$imageName.png');
+  }
 }
