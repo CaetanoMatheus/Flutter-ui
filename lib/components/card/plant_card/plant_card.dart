@@ -9,6 +9,7 @@ class PlantCard extends StatelessWidget {
   final int price;
   final String bottom;
   final String image;
+  final Function onTap;
 
   PlantCard(
     this.text, {
@@ -16,43 +17,47 @@ class PlantCard extends StatelessWidget {
     this.price,
     this.bottom,
     this.image,
+    this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return Container(
-      margin: Styles.containerMargin(),
-      width: size.width * .4,
-      child: Column(
-        children: [
-          ImageResolver.img(image),
-          Container(
-            padding: EdgeInsets.all(Consts.defaultPadding / 2),
-            decoration: Styles.bottomDecoration(),
-            child: Row(
-              children: [
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: '$text\n'.toUpperCase(),
-                        style: Theme.of(context).textTheme.button,
-                      ),
-                      TextSpan(
-                        text: '$bottom'.toUpperCase(),
-                        style: Styles.bottomText(),
-                      )
-                    ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: Styles.containerMargin(),
+        width: size.width * .4,
+        child: Column(
+          children: [
+            ImageResolver.img(image),
+            Container(
+              padding: EdgeInsets.all(Consts.defaultPadding / 2),
+              decoration: Styles.bottomDecoration(),
+              child: Row(
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: '$text\n'.toUpperCase(),
+                          style: Theme.of(context).textTheme.button,
+                        ),
+                        TextSpan(
+                          text: '$bottom'.toUpperCase(),
+                          style: Styles.bottomText(),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                Spacer(),
-                Text('\$$price', style: Styles.priceText(context))
-              ],
-            ),
-          )
-        ],
+                  Spacer(),
+                  Text('\$$price', style: Styles.priceText(context))
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

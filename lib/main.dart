@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:plant_app/screens/home/home_screens.dart';
+import 'package:plant_app/screens/home/home_screen.dart';
 import 'package:plant_app/utils/consts.dart';
 
 void main() {

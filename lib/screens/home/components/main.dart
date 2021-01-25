@@ -5,6 +5,7 @@ import 'package:plant_app/components/card/title_with_action_button/title_with_ac
 import 'package:plant_app/components/card/wide_plant_card/wide_plant_card.dart';
 import 'package:plant_app/screens/home/styles/main_styles.dart';
 import 'package:plant_app/utils/consts.dart';
+import 'package:plant_app/screens/details/details_screen.dart';
 
 class Main extends StatelessWidget {
   final List<Map> recommended = [
@@ -38,6 +39,10 @@ class Main extends StatelessWidget {
                     bottom: plant['country'],
                     price: plant['price'],
                     image: plant['image'],
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => DetailsScreen()),
+                    ),
                   ),
                 )
                 .toList(),
@@ -56,7 +61,15 @@ class Main extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           child: Row(
             children: featured
-                .map((image) => WidePlantCard(image: image, onTap: () {}))
+                .map(
+                  (image) => WidePlantCard(
+                    image: image,
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => DetailsScreen()),
+                    ),
+                  ),
+                )
                 .toList(),
           ),
         ),
